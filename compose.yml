@@ -1,0 +1,15 @@
+services:
+  tsdproxy:
+    image: almeidapaulopt/tsdproxy:2
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - datadir:/data
+      - ${CONFIG_PATH}:/config
+    restart: unless-stopped
+    environment:
+      - TSDPROXY_AUTHKEY=${TS_AUTH_KEY}
+    ports:
+      - "8118:8118"
+
+volumes:
+  datadir:
