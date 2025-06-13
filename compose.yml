@@ -1,3 +1,7 @@
+networks:
+  tsdproxy_net:
+    driver: bridge
+
 services:
   tsdproxy:
     image: almeidapaulopt/tsdproxy:2
@@ -6,6 +10,8 @@ services:
       - datadir:/data
       - ${CONFIG_PATH}:/config
     restart: unless-stopped
+    networks:
+      - tsdproxy_net
     environment:
       - TSDPROXY_AUTHKEY=${TS_AUTH_KEY}
     ports:
