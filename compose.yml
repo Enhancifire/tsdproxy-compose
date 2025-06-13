@@ -1,6 +1,7 @@
 networks:
   tsdproxy_net:
-    driver: bridge
+    external: true
+    name: tsdproxy_net
 
 services:
   tsdproxy:
